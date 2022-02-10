@@ -2,11 +2,9 @@ import java.time.LocalTime
 
 class Clock {
 
-    fun daytime(): Daytime {
-        val currentDate = LocalTime.now()
-
-        return when (currentDate.hour) {
-            in 21 downTo 5 -> Daytime.GOOD_NIGHT
+    fun dayTime(now: LocalTime) : Daytime {
+        return when (now.hour) {
+            in 0..5, in 20..23 -> Daytime.GOOD_NIGHT
             in 6..12 -> Daytime.GOOD_DAY
             else -> Daytime.GOOD_AFTERNOON
         }
